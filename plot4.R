@@ -15,7 +15,7 @@ plot4 <- function() {
   par(mfrow = c(2,2))
   with(dat, {
     plot(1:length(Global_active_power), Global_active_power, xlab = "", xaxt="n", type = "l",
-         ylab = "Global Active Power (Kilowatts)")
+         ylab = "Global Active Power")
     axis(1, at = c(0,length(Global_active_power)/2,length(Global_active_power)), labels = c("Thu","Fri","Sat"))
     
     plot(1:length(Voltage), Voltage, xlab = "", xaxt="n", type = "l", ylab = "Voltage")
