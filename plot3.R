@@ -11,15 +11,15 @@ plot3 <- function() {
   library(data.table)
   DT <- fread("household_power_consumption.txt", sep = ";", header = TRUE, na.strings = "?")
   dat <- DT[Date=="1/2/2007" | Date=="2/2/2007"]
-  dat[,timestr:= paste(Date,Time, sep = " ")]
-  timeF <- strptime(dat$timestr,"%d/%m/%Y %H:%M:%S")
   png(file = "plot3.png", bg = "transparent", width = 480, height = 480)
   with(dat, {
-    plot(1:length(Sub_metering_1), Sub_metering_1, xlab = "", xaxt = "n", type = "l", ylab = "Energy sub metering", col = "black")
+    plot(1:length(Sub_metering_1), Sub_metering_1, xlab = "", xaxt = "n", type = "l",
+         ylab = "Energy sub metering", col = "black")
     lines(1:length(Sub_metering_2), Sub_metering_2, col = "red")
     lines(1:length(Sub_metering_3), Sub_metering_3, col = "blue")
     axis(1, at = c(0,nrow(dat)/2,nrow(dat)), labels = c("Thu","Fri","Sat"))
-    legend("topright",lty = 1, col = c("black","red","blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+    legend("topright",lty = 1, col = c("black","red","blue"),
+           legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
   })
   dev.off()
 }
